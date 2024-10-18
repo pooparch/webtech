@@ -1,0 +1,917 @@
+	//ex 1
+REGISTRATION FORM
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <script type="text/javascript">
+        function display() {
+            alert("Number of Elements in this page " + document.getElementById("form1").length);
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        h1 {
+            color: #333333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        td {
+            padding: 10px;
+        }
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 4px 0;
+            box-sizing: border-box;
+        }
+        input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 4px 2px;
+        }
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">Students Registration Form</h1>
+    <form id="form1">
+        <table border="0" align="center">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" value="Firstname" /></td>
+                <td><input type="text" value="Lastname" /></td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td><select name="date"><option value="7">11</option></select></td>
+                <td><select name="month"><option value="November">November</option></select></td>
+                <td><select name="year"><option value="1991">1991</option></select></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="radio" name="gender"/>Male</td>
+                <td><input type="radio" name="gender"/>Female</td>
+            </tr>
+            <tr>
+                <td>Mobile</td>
+                <td><input type="text" ></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><textarea name="address"></textarea></td>
+            </tr>
+            <tr>
+                <td>Language you know</td>
+                <td><input type="checkbox" /> Tamil </td>
+                <td><input type="checkbox" /> English </td>
+                <td><input type="checkbox" /> Others </td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Submit" /></td>
+                <td></td>
+                <td><input type="button" value="Check no of elements" onclick="display()" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+	// ex 2
+Textbox validation (PERSONAL INFORMATION)
+
+<html>
+<head>
+<title>Personal Information</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #eaf2f8;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        color: #333;
+        text-align: center;
+        margin-top: 20px;
+    }
+    form {
+        margin: 0 auto;
+        width: 400px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    td {
+        padding: 10px;
+        font-size: 14px;
+    }
+    input[type="text"], select {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    input[type="submit"] {
+        width: 50%;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #218838;
+    }
+</style>
+<script type="text/javascript">
+function validate() {
+    if(document.myForm.Name.value == "") {
+        alert("Please Provide Your Name");
+        document.myForm.Name.focus();
+        return false;
+    }
+    if(document.myForm.Email.value == "") {
+        alert("Please Provide Your Email ID");
+        document.myForm.Email.focus();
+        return false;
+    }
+    if((document.myForm.Phone.value == "") || (document.myForm.Phone.value.length != 10) ) {
+        alert("Please Provide a valid Phone Number");
+        document.myForm.Phone.focus();
+        return false;
+    }
+    if(document.myForm.Country.value == "-1") {
+        alert("Please Provide Your Country Name");
+        return false;
+    }
+    return true;
+}
+
+function validateEmail() {
+    var emailID = document.myForm.Email.value;
+    atpos = emailID.indexOf("@");
+    dotpos = emailID.lastIndexOf(".");
+    if(atpos < 1 || (dotpos - atpos < 2)) {
+        alert("Please Enter Correct Email ID");
+        document.myForm.Email.focus();
+        return false;
+    }
+    return true;
+}
+</script>
+</head>
+<body>
+<h1>Personal Information</h1>
+<form name="myForm" onsubmit="return(validate());">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="Name" /></td>
+        </tr>
+        <tr>
+            <td>Email ID</td>
+            <td><input type="text" name="Email" onchange="validateEmail();" /></td>
+        </tr>
+        <tr>
+            <td>Phone Number</td>
+            <td><input type="text" name="Phone"/></td>
+        </tr>
+        <tr>
+            <td>Country</td>
+            <td>
+                <select name="Country">
+                    <option value="-1" selected>[Choose Yours]</option>
+                    <option value="1">INDIA</option>
+                    <option value="2">USA</option>
+                    <option value="3">UK</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+
+	//EX 3
+Mathematical Expression
+
+<html>
+<head>
+<title>Mathematical Expression</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f7f9fc;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        color: #333;
+        text-align: center;
+        margin-top: 20px;
+    }
+    p {
+        text-align: center;
+        font-size: 16px;
+        color: #555;
+    }
+    form {
+        margin: 0 auto;
+        width: 350px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    td {
+        padding: 10px;
+        font-size: 14px;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    input[type="button"] {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+    input[type="button"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+<script type="text/javascript">
+function math_exp() {
+    var x = document.form1.exptext.value;
+    try {
+        var result = eval(x);
+        document.form1.resulttext.value = result;
+    } catch (e) {
+        alert("Invalid Expression");
+    }
+}
+</script>
+</head>
+<body>
+<h1>Evaluate Mathematical Expression</h1>
+<p>Enter a mathematical expression in the text box below. Ex: 5+4</p>
+<form name="form1">
+    <table>
+        <tr>
+            <td>Expression</td>
+            <td><input type="text" name="exptext" /></td>
+        </tr>
+        <tr>
+            <td>Result</td>
+            <td><input type="text" name="resulttext" readonly/></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="button" value="Calculate" onclick="math_exp()" />
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+
+	//EX 4
+DYNAMIC EFFECTS
+
+<html>
+<head>
+<title>Moving Image</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f0f8ff;
+        position: relative;
+        height: 100vh;
+    }
+    .moveable {
+        position: absolute;
+        transition: top 0.1s linear, left 0.1s linear;
+    }
+    img {
+        width: 100px;
+        height: 100px;
+        border: 2px solid #333;
+        border-radius: 50%;
+    }
+</style>
+<script type="text/javascript">
+    var x = 5;
+    var y = 5;
+    var dest_x = 300;
+    var dest_y = 300;
+    var interval = 10;
+
+    function moveImage() {
+        if (x < dest_x) x = x + interval;
+        if (y < dest_y) y = y + interval;
+        document.getElementById("ufo").style.top = y + "px";
+        document.getElementById("ufo").style.left = x + "px";
+        if ((x + interval < dest_x) && (y + interval < dest_y)) {
+            window.setTimeout(moveImage, 100);
+        }
+    }
+</script>
+</head>
+<body onload="moveImage()">
+    <div id="ufo" class="moveable">
+        <img src="image.jpg" alt="Please link to a valid image" />
+    </div>
+</body>
+</html>
+
+	//EX 5
+SUM OF N NATURAL NUMBERS
+
+<html>
+<head>
+<title>Sum of Natural Numbers</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    .output {
+        margin: 20px auto;
+        padding: 20px;
+        width: 60%;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-size: 16px;
+    }
+    .output b {
+        color: #007bff;
+    }
+    .output .numbers {
+        margin-top: 10px;
+        font-size: 18px;
+        color: #ff6347;
+    }
+</style>
+<script type="text/javascript">
+    var num = window.prompt("Enter the number:", "");
+    var n = parseInt(num);
+    result = sumnaturalno(n);
+    document.write("<div class='output'><b>The sum of " + n + " natural numbers is " + result + "</b></div>");
+
+    function sumnaturalno(n) {
+        var i;
+        var sum = 0;
+        document.write("<div class='output'><div class='numbers'>Natural numbers are: ");
+        for (i = 1; i <= n; i++) {
+            document.write(i + " ");
+            sum = sum + i;
+        }
+        document.write("</div></div>");
+        return sum;
+    }
+</script>
+</head>
+</html>
+
+	//EX 6
+CURRENT DATE
+
+<html>
+<head>
+<title>Display Current Date</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+        margin: 0;
+        padding: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        box-sizing: border-box;
+    }
+    .date-display {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 18px;
+        color: #333;
+    }
+    .date-display b {
+        color: #007bff;
+        font-size: 20px;
+    }
+</style>
+<script type="text/javascript">
+    var d = new Date();
+    var weekday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+    var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+
+    document.write("<div class='date-display'><b>Today's date:</b><br>");
+    document.write(weekday[d.getDay()] + " ");
+    document.write(d.getDate() + ", ");
+    document.write(monthname[d.getMonth()] + " ");
+    document.write(d.getFullYear());
+    document.write("</div>");
+</script>
+</head>
+<body>
+</body>
+</html>
+
+	//EX 7
+STUDENT MARKS
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Marks Details</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 50%;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+    td {
+        padding: 12px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type="button"] {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+    }
+    input[type="button"]:hover {
+        background-color: #218838;
+    }
+    td[colspan="2"] {
+        text-align: center;
+        font-weight: bold;
+        background-color: #e9ecef;
+    }
+</style>
+<script type="text/javascript">
+function calc() {
+    var m1, m2, m3, m4, avg = 0, total = 0, result = "", grade = "";
+    m1 = parseInt(document.form1.wt.value);
+    m2 = parseInt(document.form1.os.value);
+    m3 = parseInt(document.form1.ls.value);
+    m4 = parseInt(document.form1.dmw.value);
+    total = m1 + m2 + m3 + m4;
+    avg = total / 4;
+
+    if (m1 < 35 || m2 < 35 || m3 < 35 || m4 < 35) {
+        result = "Fail";
+        grade = "D";
+    } else if (avg >= 75) {
+        result = "Distinction";
+        grade = "A+";
+    } else if (avg >= 60 && avg < 75) {
+        result = "First Class";
+        grade = "A";
+    } else if (avg >= 50 && avg < 60) {
+        result = "Second Class";
+        grade = "B";
+    } else if (avg >= 35 && avg < 50) {
+        result = "Pass Class";
+        grade = "C";
+    } else {
+        result = "Fail";
+        grade = "D";
+    }
+
+    document.form1.result.value = result;
+    document.form1.grade.value = grade;
+    document.form1.total.value = total;
+    document.form1.average.value = avg;
+}
+</script>
+</head>
+<body>
+<form name="form1">
+    <h1>Student Marks Information</h1>
+    <table>
+        <tr>
+            <td>Register Number</td>
+            <td><input type="text" /></td>
+        </tr>
+        <tr>
+            <td>Student Name</td>
+            <td><input type="text" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">Subject Marks</td>
+        </tr>
+        <tr>
+            <td>Web Technology</td>
+            <td><input type="text" name="wt" /></td>
+        </tr>
+        <tr>
+            <td>Operating Systems</td>
+            <td><input type="text" name="os" /></td>
+        </tr>
+        <tr>
+            <td>Linux and Shell Programming</td>
+            <td><input type="text" name="ls" /></td>
+        </tr>
+        <tr>
+            <td>Data Mining and Warehousing</td>
+            <td><input type="text" name="dmw" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" onclick="calc()" value="Calculate" /></td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td><input type="text" name="total" /></td>
+        </tr>
+        <tr>
+            <td>Average</td>
+            <td><input type="text" name="average" /></td>
+        </tr>
+        <tr>
+            <td>Result</td>
+            <td><input type="text" name="result" /></td>
+        </tr>
+        <tr>
+            <td>Grade</td>
+            <td><input type="text" name="grade" /></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+
+	//EX 8
+EMPLOYEE PAYSLIP
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Pay Slip</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    table {
+        margin: 0 auto;
+        width: 50%;
+        border-collapse: collapse;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    td {
+        padding: 12px;
+        border: 1px solid #ccc;
+        text-align: left;
+        font-size: 14px;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type="button"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    input[type="button"]:hover {
+        background-color: #0056b3;
+    }
+    td[colspan="2"] {
+        text-align: center;
+        background-color: #e9ecef;
+        font-weight: bold;
+    }
+</style>
+<script type="text/javascript">
+function calc() {
+    var bp, DA, HRA, GP, PF, Tax, Deduction, NetPay;
+    bp = parseInt(document.form1.bp.value);
+    DA = bp * 0.5;
+    HRA = bp * 0.5;
+    GP = bp + DA + HRA;
+    PF = GP * 0.02;
+    Tax = GP * 0.01;
+    Deduction = Tax + PF;
+    NetPay = GP - Deduction;
+    
+    document.form1.da.value = DA;
+    document.form1.hra.value = HRA;
+    document.form1.gp.value = GP;
+    document.form1.pf.value = PF;
+    document.form1.tax.value = Tax;
+    document.form1.deduction.value = Deduction;
+    document.form1.netpay.value = NetPay;
+}
+</script>
+</head>
+<body>
+<form name="form1">
+    <h1>Employee Pay Slip</h1>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="firstname" /></td>
+        </tr>
+        <tr>
+            <td>Employee ID</td>
+            <td><input type="text" name="eid" /></td>
+        </tr>
+        <tr>
+            <td>Designation</td>
+            <td><input type="text" name="designation" /></td>
+        </tr>
+        <tr>
+            <td>Basic Pay</td>
+            <td><input type="text" name="bp"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" name="calculate" value="Click Here To Calculate" onclick="calc()" /></td>
+        </tr>
+        <tr>
+            <td>Dearness Allowance</td>
+            <td><input type="text" name="da" /></td>
+        </tr>
+        <tr>
+            <td>House Rent Allowance</td>
+            <td><input type="text" name="hra" /></td>
+        </tr>
+        <tr>
+            <td>GP</td>
+            <td><input type="text" name="gp" /></td>
+        </tr>
+        <tr>
+            <td>Provident Fund</td>
+            <td><input type="text" name="pf" /></td>
+        </tr>
+        <tr>
+            <td>Tax</td>
+            <td><input type="text" name="tax" /></td>
+        </tr>
+        <tr>
+            <td>Deduction</td>
+            <td><input type="text" name="deduction" /></td>
+        </tr>
+        <tr>
+            <td>Net Pay</td>
+            <td><input type="text" name="netpay" /></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+
+
+	//EX 9
+RESTURANT MENU
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Menus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            margin: 0 auto;
+            width: 60%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+            font-size: 14px;
+        }
+        select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        input[type="button"], input[type="reset"] {
+            width: 48%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="button"]:hover, input[type="reset"]:hover {
+            background-color: #0056b3;
+        }
+        td[colspan="2"] {
+            text-align: center;
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+    </style>
+    <script type="text/javascript">
+        function findcost() {
+            var major = document.getElementById("major");
+            var starters = document.getElementById("starters");
+            var soft = document.getElementById("soft");
+            var s = "Item \t \t \t Price \n--------------------------------\n";
+            var totalcost = 0;
+
+            for (var i = 0; i < major.options.length; i++) {
+                var option = major.options[i];
+                if (option.selected == true) {
+                    var price = parseInt(option.value);
+                    totalcost += price;
+                    s += option.text + "\t \t" + price + "\n";
+                }
+            }
+
+            for (var i = 0; i < starters.options.length; i++) {
+                var option = starters.options[i];
+                if (option.selected == true) {
+                    var price = parseInt(option.value);
+                    totalcost += price;
+                    s += option.text + "\t \t \t" + price + "\n";
+                }
+            }
+
+            var softdrinkindex = soft.selectedIndex;
+            if (softdrinkindex != null) {
+                var selectedsoftdrink = soft.options[soft.selectedIndex].text;
+                var price = parseInt(soft.options[soft.selectedIndex].value);
+                totalcost += price;
+                s += selectedsoftdrink + "\t \t \t" + price + "\n";
+            }
+
+            s += "\n\n--------------------------------\n Total Cost \t \t \t" + totalcost;
+            document.getElementById("ordereditems").value = s;
+        }
+    </script>
+</head>
+<body>
+<form name="menuForm">
+    <table>
+        <tr>
+            <td colspan="2" align="center">
+                <h2>Restaurant Menu Details</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>Major Dishes:</td>
+            <td>
+                <select id="major" size="4" multiple="multiple">
+                    <option value="150">Vegetable Pulav</option>
+                    <option value="250">Hyderabadi Biriyani</option>
+                    <option value="50">Roti with Curry</option>
+                    <option value="80">Parotta with Curry</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Starters</td>
+            <td>
+                <select id="starters" size="3" multiple="multiple">
+                    <option value="100">Gobi Manchurian</option>
+                    <option value="60">Veg Clear Soup</option>
+                    <option value="150">Paneer Tikka</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Soft Drinks</td>
+            <td>
+                <select id="soft" size="3">
+                    <option value="20">Pepsi Mini</option>
+                    <option value="25">Coke Mini</option>
+                    <option value="30">Lime Soda</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <textarea id="ordereditems" rows="10" cols="40"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="Find Total Cost" onclick="findcost()" />
+            </td>
+            <td>
+                <input type="reset" value="Clear" />
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
